@@ -12,7 +12,7 @@ const ALL_AUTHORS = gql`
  }
 `
 
-const Authors = ({authors})=> {
+const Authors = ()=> {
     const result = useQuery(ALL_AUTHORS)
     if(result.loading){
         return <div>Loading....</div>
@@ -24,6 +24,7 @@ const Authors = ({authors})=> {
             <Table 
                 tableData = {result.data.allAuthors}
                 headerData = {['', 'born', 'books']}
+                type='authors'
             />
         </div>
     )

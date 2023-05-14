@@ -1,8 +1,6 @@
 import React from 'react';
 
-const Table = (props) => {
-
-  const { tableData, headerData } = props;
+const Table = ({ tableData, headerData, type }) => {
 
   const tableHeader = () => {
     return headerData.map((data, idx) => {
@@ -12,7 +10,7 @@ const Table = (props) => {
     })
   }
 
-  const returnTableData = () => {
+  const returnAuthorsData = () => {
     return tableData.map((authors) => {
       const { name, born, bookCount } = authors;
       return (
@@ -24,7 +22,18 @@ const Table = (props) => {
       )
     });
   }
-
+  const returnBooksData = () => {
+    return tableData.map((books) => {
+      const { author, title, published } = books;
+      return (
+        <tr data-id={title} key={title}>
+          <td>{title}</td>
+          <td>{author}</td>
+          <td>{published}</td>
+        </tr>
+      )
+    });
+  }
   return (
     <>
       <table>
@@ -34,7 +43,7 @@ const Table = (props) => {
           </tr>          
         </thead>
         <tbody>
-          {returnTableData()}          
+            {type === 'authors'? returnAuthorsData() : returnBooksData()}
         </tbody>
       </table>
     </>

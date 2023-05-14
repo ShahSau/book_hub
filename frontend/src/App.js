@@ -1,6 +1,7 @@
 import './App.css';
 import Authors from './Authors';
 import { useState } from 'react';
+import Books from './Books'
 
 
 const App = ()=> {
@@ -15,7 +16,7 @@ const App = ()=> {
       books
     </button>
     {
-      fetch === 'authors' ? (<Authors />) : (<h2>books</h2>)
+      fetch === 'authors' ? (<Authors />) : (<Books />)
     }
 
   </div>
